@@ -431,31 +431,6 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
 
-  /* ----------------------------------------------------------
-     10.5 VIDEO PLAY/PAUSE CONTROL
-  ---------------------------------------------------------- */
-  const initVideoControl = () => {
-    const video = document.getElementById('heroVideo');
-    const btn = document.getElementById('videoControlBtn');
-    if (!video || !btn) return;
-
-    btn.addEventListener('click', () => {
-      if (video.paused) {
-        video.play();
-        btn.innerHTML = '<i class="fas fa-pause"></i>';
-        btn.setAttribute('aria-label', 'Pause Animation');
-      } else {
-        video.pause();
-        btn.innerHTML = '<i class="fas fa-play"></i>';
-        btn.setAttribute('aria-label', 'Play Animation');
-      }
-    });
-  };
-
-
-  /* ----------------------------------------------------------
-     11. INITIALISE EVERYTHING
-  ---------------------------------------------------------- */
   initTypingEffect();
   initParticles();
   initNavbarScroll();
@@ -466,7 +441,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounters();
   initContactForm();
   initTiltEffect();
-  initVideoControl();
 
   // Add 'loaded' class to body after a brief delay for entrance animations
   setTimeout(() => {

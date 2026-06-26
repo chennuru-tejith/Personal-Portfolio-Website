@@ -5,26 +5,26 @@
 
 /* ---------- Design Tokens ---------- */
 :root {
-  --bg-primary: #0a1628;
-  --bg-secondary: #0d1b2a;
-  --bg-tertiary: #1a2a4a;
-  --accent: #4d9fff;
-  --accent-cyan: #00d4ff;
-  --accent-rgb: 77, 159, 255;
-  --cyan-rgb: 0, 212, 255;
-  --text-primary: #ffffff;
-  --text-muted: #b8c5d6;
-  --text-subtle: #8892a0;
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-hover: rgba(255, 255, 255, 0.1);
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --accent: #e21a22;
+  --accent-cyan: #ff4d4d;
+  --accent-rgb: 226, 26, 34;
+  --cyan-rgb: 255, 77, 77;
+  --text-primary: #0f172a;
+  --text-muted: #475569;
+  --text-subtle: #64748b;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(226, 26, 34, 0.1);
+  --glass-hover: rgba(226, 26, 34, 0.04);
   --card-radius: 12px;
   --btn-radius: 50px;
   --transition: 0.3s ease;
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
-  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.4);
-  --shadow-accent: 0 4px 30px rgba(77, 159, 255, 0.15);
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 16px 48px rgba(15, 23, 42, 0.12);
+  --shadow-accent: 0 8px 24px rgba(226, 26, 34, 0.15);
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'Inter', sans-serif;
 }
@@ -1975,4 +1975,259 @@ h1, h2, h3, h4, h5, h6 {
 .nav-overlay.active {
   opacity: 1;
   visibility: visible;
+}
+
+/* ============================================================
+   RED & WHITE THEME CUSTOM OVERRIDES
+   ============================================================ */
+
+/* Hero Section Custom Red Gradient & Typography */
+.hero {
+  background: linear-gradient(135deg, #e21a22 0%, #a80f15 100%) !important;
+  color: #ffffff !important;
+}
+
+.hero-text h1 {
+  color: #ffffff !important;
+}
+
+.hero-text h1 span {
+  background: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.hero-greeting {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.hero-description {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.typing-container {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.typed-text {
+  color: #ffffff !important;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+.cursor {
+  background: #ffffff !important;
+}
+
+/* Button overrides in Hero */
+.hero .btn-primary {
+  background: #ffffff !important;
+  color: #e21a22 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.hero .btn-primary:hover {
+  background: #f8f9fa !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25) !important;
+  color: #c61118 !important;
+}
+
+.hero .btn-secondary {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.hero .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Social icons in Hero */
+.hero .social-icons a {
+  color: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.hero .social-icons a:hover {
+  color: #e21a22 !important;
+  background: #ffffff !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Scroll indicator animation & styling */
+.scroll-indicator span {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.mouse {
+  border: 2px solid rgba(255, 255, 255, 0.7) !important;
+}
+
+.wheel {
+  background: #ffffff !important;
+  animation: scroll-wheel 1.5s ease-in-out infinite !important;
+}
+
+@keyframes scroll-wheel {
+  0% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(6px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Navbar Link Colors (Transparent vs Scrolled) */
+.navbar:not(.scrolled) .nav-links a {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.navbar:not(.scrolled) .nav-links a.active,
+.navbar:not(.scrolled) .nav-links a:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.navbar:not(.scrolled) .nav-logo {
+  color: #ffffff !important;
+}
+
+.navbar:not(.scrolled) .hire-btn {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.navbar:not(.scrolled) .hire-btn:hover {
+  background: #ffffff !important;
+  color: #e21a22 !important;
+  border-color: #ffffff !important;
+}
+
+.navbar.scrolled .nav-links a {
+  color: #334155 !important;
+}
+
+.navbar.scrolled .nav-links a.active,
+.navbar.scrolled .nav-links a:hover {
+  color: #e21a22 !important;
+}
+
+.navbar.scrolled .nav-logo {
+  color: #0f172a !important;
+}
+
+.navbar.scrolled .hire-btn {
+  color: #ffffff !important;
+  background: #e21a22 !important;
+  border-color: #e21a22 !important;
+}
+
+.navbar.scrolled .hire-btn:hover {
+  background: #c61118 !important;
+  border-color: #c61118 !important;
+}
+
+/* Hamburger toggle line colors */
+.navbar:not(.scrolled) .menu-toggle span {
+  background: #ffffff !important;
+}
+
+.navbar.scrolled .menu-toggle span {
+  background: #0f172a !important;
+}
+
+/* Scrolled Navbar background override */
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 4px 30px rgba(15, 23, 42, 0.05) !important;
+}
+
+/* Mobile Menu background & links override */
+@media (max-width: 991px) {
+  .nav-links {
+    background: rgba(255, 255, 255, 0.98) !important;
+    border-left: 1px solid rgba(226, 26, 34, 0.08) !important;
+    box-shadow: -10px 0 40px rgba(15, 23, 42, 0.1) !important;
+  }
+  
+  .nav-links li a {
+    color: #334155 !important;
+  }
+  
+  .nav-links li a:hover,
+  .nav-links li a.active {
+    color: #e21a22 !important;
+    background: rgba(226, 26, 34, 0.05) !important;
+  }
+}
+
+/* Contact Form Input fields in Light Theme */
+.contact-form {
+  background: #ffffff !important;
+  border: 1px solid rgba(226, 26, 34, 0.1) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.form-group input,
+.form-group textarea {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  background: #ffffff !important;
+  border-color: #e21a22 !important;
+  box-shadow: 0 0 0 3px rgba(226, 26, 34, 0.15) !important;
+}
+
+/* Achievement Card paragraph fix */
+.achievement-card p {
+  color: var(--text-muted) !important;
+  font-size: 0.9rem !important;
+  line-height: 1.7 !important;
+}
+
+/* Footer override for Slate Dark */
+.footer {
+  background: #0f172a !important;
+  border-top: 1px solid rgba(226, 26, 34, 0.1) !important;
+  color: #ffffff !important;
+}
+
+.footer-logo {
+  background: linear-gradient(135deg, #ffffff, #ffe3e3) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+.footer-links h4,
+.footer-social h4 {
+  color: #ffffff !important;
+}
+
+.footer-links a {
+  color: #94a3b8 !important;
+}
+
+.footer-links a:hover {
+  color: #ff4d4d !important;
+}
+
+.footer-social .social-icons a {
+  color: #94a3b8 !important;
+  border-color: rgba(148, 163, 184, 0.2) !important;
+}
+
+.footer-social .social-icons a:hover {
+  color: #e21a22 !important;
+  background: #ffffff !important;
+  border-color: #ffffff !important;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(148, 163, 184, 0.1) !important;
+  color: #64748b !important;
 }

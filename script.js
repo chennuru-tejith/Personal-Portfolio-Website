@@ -430,6 +430,103 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  /* ----------------------------------------------------------
+     11. REPLICA INTERACTIVE CONTROLS
+  ---------------------------------------------------------- */
+  const initReplicaControls = () => {
+    const pauseBtn = document.getElementById('pauseAnimBtn');
+    const muteBtn = document.getElementById('muteSoundBtn');
+    
+    if (pauseBtn) {
+      pauseBtn.addEventListener('click', () => {
+        const isPaused = document.body.classList.toggle('paused-animations');
+        if (isPaused) {
+          pauseBtn.querySelector('i').className = 'fas fa-play';
+          pauseBtn.querySelector('span').textContent = 'PLAY';
+          pauseBtn.classList.add('active');
+        } else {
+          pauseBtn.querySelector('i').className = 'fas fa-pause';
+          pauseBtn.querySelector('span').textContent = 'PAUSE';
+          pauseBtn.classList.remove('active');
+        }
+      });
+    }
+    
+    if (muteBtn) {
+      let audioCtx = null;
+      let osc1 = null;
+      let osc2 = null;
+      let gainNode = null;
+      
+      const startHum = () => {
+        try {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          
+          // Oscillator 1: low hum (60Hz sawtooth)
+          osc1 = audioCtx.createOscillator();
+          osc1.type = 'sawtooth';
+          osc1.frequency.setValueAtTime(60, audioCtx.currentTime);
+          
+          // Oscillator 2: engine harmonic (120Hz triangle)
+          osc2 = audioCtx.createOscillator();
+          osc2.type = 'triangle';
+          osc2.frequency.setValueAtTime(120, audioCtx.currentTime);
+          
+          // Gain node for safe low volume (5% max)
+          gainNode = audioCtx.createGain();
+          gainNode.gain.setValueAtTime(0.04, audioCtx.currentTime);
+          
+          // Lowpass filter for warm tone
+          const filter = audioCtx.createBiquadFilter();
+          filter.type = 'lowpass';
+          filter.frequency.setValueAtTime(150, audioCtx.currentTime);
+          
+          osc1.connect(filter);
+          osc2.connect(filter);
+          filter.connect(gainNode);
+          gainNode.connect(audioCtx.destination);
+          
+          osc1.start();
+          osc2.start();
+        } catch (e) {
+          console.warn('AudioContext not supported or failed to initialize:', e);
+        }
+      };
+      
+      const stopHum = () => {
+        if (osc1) {
+          try { osc1.stop(); } catch(e) {}
+          osc1 = null;
+        }
+        if (osc2) {
+          try { osc2.stop(); } catch(e) {}
+          osc2 = null;
+        }
+        if (audioCtx) {
+          try { audioCtx.close(); } catch(e) {}
+          audioCtx = null;
+        }
+      };
+      
+      muteBtn.addEventListener('click', () => {
+        muteBtn.classList.toggle('active');
+        const isActive = muteBtn.classList.contains('active');
+        const icon = muteBtn.querySelector('i');
+        const label = muteBtn.querySelector('span');
+        
+        if (isActive) {
+          icon.className = 'fas fa-volume-mute';
+          label.textContent = 'SOUND ON';
+          startHum();
+        } else {
+          icon.className = 'fas fa-volume-up';
+          label.textContent = 'SOUND OFF';
+          stopHum();
+        }
+      });
+    }
+  };
+
 
   initTypingEffect();
   initParticles();
@@ -441,6 +538,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounters();
   initContactForm();
   initTiltEffect();
+  initReplicaControls();
 
   // Add 'loaded' class to body after a brief delay for entrance animations
   setTimeout(() => {

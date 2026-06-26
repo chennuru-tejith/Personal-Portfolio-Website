@@ -453,7 +453,8 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 0;
 }
 
-.avatar-img {
+.avatar-img,
+.avatar-video {
   width: 320px;
   height: 320px;
   border-radius: 50%;
@@ -467,10 +468,38 @@ h1, h2, h3, h4, h5, h6 {
   transition: var(--transition);
 }
 
-.avatar-img:hover {
+.avatar-img:hover,
+.avatar-video:hover {
   border-color: rgba(var(--accent-rgb), 0.6);
   box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5),
     0 0 80px rgba(var(--accent-rgb), 0.25);
+}
+
+.video-control-btn {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(var(--bg-primary-rgb), 0.6);
+  border: 1px solid rgba(var(--accent-rgb), 0.4);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: var(--transition);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-sm);
+}
+
+.video-control-btn:hover {
+  background: rgba(var(--accent-rgb), 0.3);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-accent);
+  transform: scale(1.05);
 }
 
 .float-animation {
@@ -1641,7 +1670,8 @@ h1, h2, h3, h4, h5, h6 {
     height: 300px;
   }
 
-  .avatar-img {
+  .avatar-img,
+  .avatar-video {
     width: 260px;
     height: 260px;
   }
@@ -1793,7 +1823,8 @@ h1, h2, h3, h4, h5, h6 {
     height: 240px;
   }
 
-  .avatar-img {
+  .avatar-img,
+  .avatar-video {
     width: 200px;
     height: 200px;
   }

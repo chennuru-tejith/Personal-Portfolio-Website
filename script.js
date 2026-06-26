@@ -440,14 +440,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (pauseBtn) {
       pauseBtn.addEventListener('click', () => {
         const isPaused = document.body.classList.toggle('paused-animations');
+        const heroVideo = document.getElementById('heroVideo');
         if (isPaused) {
           pauseBtn.querySelector('i').className = 'fas fa-play';
           pauseBtn.querySelector('span').textContent = 'PLAY';
           pauseBtn.classList.add('active');
+          if (heroVideo) {
+            heroVideo.pause();
+          }
         } else {
           pauseBtn.querySelector('i').className = 'fas fa-pause';
           pauseBtn.querySelector('span').textContent = 'PAUSE';
           pauseBtn.classList.remove('active');
+          if (heroVideo) {
+            heroVideo.play().catch(e => console.warn("Video play failed:", e));
+          }
         }
       });
     }

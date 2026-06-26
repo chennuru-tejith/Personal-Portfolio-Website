@@ -431,43 +431,6 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
 
-  /* ----------------------------------------------------------
-     10.5 VIDEO PLAY/PAUSE CONTROL (Smart Fallback)
-  ---------------------------------------------------------- */
-  const initVideoControl = () => {
-    const video = document.getElementById('heroVideo');
-    const img = document.getElementById('heroImg');
-    const btn = document.getElementById('videoControlBtn');
-    if (!video || !img || !btn) return;
-
-    // Check if the video can play
-    video.addEventListener('canplay', () => {
-      video.style.display = 'block';
-      img.style.display = 'none';
-      btn.style.display = 'flex';
-      video.play().catch(err => console.log("Auto-play blocked:", err));
-    });
-
-    // If video fails to load, make sure image remains visible and controls hidden
-    video.addEventListener('error', () => {
-      video.style.display = 'none';
-      img.style.display = 'block';
-      btn.style.display = 'none';
-    });
-
-    btn.addEventListener('click', () => {
-      if (video.paused) {
-        video.play();
-        btn.innerHTML = '<i class="fas fa-pause"></i>';
-        btn.setAttribute('aria-label', 'Pause Animation');
-      } else {
-        video.pause();
-        btn.innerHTML = '<i class="fas fa-play"></i>';
-        btn.setAttribute('aria-label', 'Play Animation');
-      }
-    });
-  };
-
   initTypingEffect();
   initParticles();
   initNavbarScroll();
@@ -478,7 +441,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounters();
   initContactForm();
   initTiltEffect();
-  initVideoControl();
 
   // Add 'loaded' class to body after a brief delay for entrance animations
   setTimeout(() => {
